@@ -1,7 +1,11 @@
 #include <vector>
-class Song(){
+#include "key.h"
+using namespace std;
+
+class Song{
+	vector<Note> allowedNotes;
 	vector<vector<int> > data;
-	void fitKey(Key key);
+	void fitKey(Note key);
 	public:
-		Song(vector<vector<int> > d;
-}
+		Song(vector<vector<int> > d, Note key);
+};

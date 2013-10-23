@@ -1,20 +1,22 @@
 enum Note{
-	A = 0,
-	B,
-	C,
-	D,
-	E,
-	F,
-	G
+	Af = 0,
+	A = 1,
+	As = 2,
+	Bf = 2,
+	B = 3,
+	Bs = 4,
+	Cf = 3,
+	C = 4,
+	Cs = 5,
+	Df = 5,
+	D = 6,
+	Ds = 7,
+	Ef = 7,
+	E = 8,
+	Es = 9,
+	F = 9,
+	Fs = 10,
+	Gf = 10,
+	G = 11,
+	Gs = 0
 };
-
-enum Accidental{
-	flat = 0,
-	natural,
-	sharp
-};
-
-class Key{
-	public:
-	Key(Note key, Accidental accidental);
-}

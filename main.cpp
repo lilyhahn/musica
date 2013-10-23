@@ -9,6 +9,6 @@ int main(int argc, char **argv){
 	vector<vector<int> > soup = ca.generate();
 	Graphics::renderca(soup, "rule30.png");
 	//graphics::renderca(soup, (new complex(20, 40)), "range.png");
-	vector<vector<int> > range = Matrix::constrain(soup, (complex(20, 40)));
+	vector<vector<int> > range = Matrix::constrain(soup, (complex(20, 32)));
 	Graphics::renderca(range, "rangeconst.png");
 }
