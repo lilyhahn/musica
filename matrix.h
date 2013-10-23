@@ -4,7 +4,7 @@
 #endif
 using namespace std;
 
-class matrix{
+class Matrix{
 	public:
 		static vector<vector<int> > constrain(vector<vector<int> > m, complex range);
 };

@@ -1,11 +1,11 @@
 #include "rule30.h"
 using namespace std;
 
-rule30::rule30(int size){
+Rule30::Rule30(int size){
 	sizex = size;
 	sizey = size;
 }
-vector<vector<int> > rule30::generate(){
+vector<vector<int> > Rule30::generate(){
 	vector<vector<int> > world;
 	world.resize(sizex);
 	srand(time(NULL));

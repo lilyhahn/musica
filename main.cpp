@@ -5,8 +5,10 @@
 using namespace std;
 
 int main(int argc, char **argv){
-	rule30* ca = new rule30(40);
-	vector<vector<int> > soup = ca->generate();
-	graphics::renderca(soup, "rule30.png");
-	graphics::renderca(soup, (new complex(20, 40)), "range.png");
+	Rule30 ca = Rule30(40);
+	vector<vector<int> > soup = ca.generate();
+	Graphics::renderca(soup, "rule30.png");
+	//graphics::renderca(soup, (new complex(20, 40)), "range.png");
+	vector<vector<int> > range = Matrix::constrain(soup, (complex(20, 40)));
+	Graphics::renderca(range, "rangeconst.png");
 }

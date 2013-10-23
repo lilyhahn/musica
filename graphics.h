@@ -4,9 +4,9 @@
 #include "complex.h"
 using namespace std;
 
-class graphics{
+class Graphics{
 	public:
-		graphics();
+		Graphics();
 		static void renderca(vector<vector<int> >, string path);
-		static void renderca(vector<vector<int> >, complex* width, string path);
+		//static void renderca(vector<vector<int> >, complex* width, string path);
 };
