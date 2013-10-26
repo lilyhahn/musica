@@ -1,5 +1,5 @@
 #include <vector>
-#include "key.h"
+#include "note.h"
 using namespace std;
 
 class Song{
