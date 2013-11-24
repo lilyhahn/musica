@@ -12,5 +12,9 @@ int main(int argc, char **argv){
 	//graphics::renderca(soup, (new complex(20, 40)), "range.png");
 	vector<vector<int> > range = Matrix::constrain(soup, (complex(20, 32)));
 	Graphics::renderca(range, "rangeconst.png");
-	Song song = Song(range, C);
+	Song song = Song(range, Note::C);
+	song.render("songc.png");
+	//song.play();
+	/*song.changeKey(Note::G);
+	song.render("songg.png");*/
 }
