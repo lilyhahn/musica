@@ -1,5 +1,4 @@
 #include "song.h"
-#include "graphics.h"
 #include <iostream>
 #include <unistd.h>
 using namespace std;
@@ -8,6 +7,16 @@ Song::Song(vector<vector<int> > d, Note key){
 	data = d;
 	startData = d;
 	changeKey(key);
+	engine = irrklang::createIrrKlangDevice();
+}
+Song::Song(Rule30 ca, Note key){
+	data = ca.getData();
+	startData = ca.getData();
+	changeKey(key);
+	engine = irrklang::createIrrKlangDevice();
+}
+Song::~Song(){
+	engine->drop();
 }
 void Song::changeKey(Note key){
 	allowedNotes.clear();
@@ -147,10 +156,8 @@ bool Song::isInKey(Note note){
 vector<vector<int> > Song::getData(){
 	return data;
 }
-void Song::render(string path){
-	Graphics::renderca(data, path);
-	irrklang::ISoundEngine* engine = irrklang::createIrrKlangDevice();
-		for(int j = 0; j < data[0].size(); j++){
+void Song::play(){
+	for(int j = 0; j < data[0].size(); j++){
 		for(int i = 0; i < data.size(); i++){
 			if(!data[i][j]){
 				
@@ -162,5 +169,8 @@ void Song::render(string path){
 		}
 		sleep(1);
 	}
-	engine->drop();
+}
+void Song::renderData(string path){
+	Rule30 dataCA = Rule30(data);
+	dataCA.render(path);
 }

@@ -4,6 +4,25 @@ using namespace std;
 Rule30::Rule30(int size){
 	sizex = size;
 	sizey = size;
+	data = generate();
+}
+Rule30::Rule30(vector<vector<int> > d){
+	data = d;
+}
+void Rule30::render(string path){
+	gdImagePtr img = gdImageCreate(data.size(), data[0].size());
+	int white = gdImageColorAllocate(img, 255, 255, 255);
+	int black = gdImageColorAllocate(img, 0, 0, 0);
+	FILE *out;
+	for(int j = 0; j < data[0].size(); j++){
+		for(int i = 0; i < data.size(); i++){
+			if(data[i][j]) gdImageSetPixel(img, i, j, black);
+		}
+	}
+	out = fopen(path.c_str(), "wb"); //wb for windows portability
+	gdImagePng(img, out);
+	fclose(out);
+	gdImageDestroy(img);
 }
 vector<vector<int> > Rule30::generate(){
 	vector<vector<int> > world;
@@ -33,4 +52,18 @@ vector<vector<int> > Rule30::generate(){
 		world[j][sizex] = world[j][1];
 	}
 	return world;
+}
+void Rule30::constrain(complex range){
+	vector<vector<int> > out;
+	out.resize(range.y-range.x);
+	for(int i = range.x; i < range.y; i++) out[i-range.x].resize(data.size()); // resize first to avoid overwriting data
+	for(int j = 0; j < data.size(); j++){
+		for(int i = range.x; i < range.y; i++){
+			out[i-range.x][j] = data[i][j];
+		}
+	}
+	data = out;
+}
+vector<vector<int> > Rule30::getData(){
+	return data;
 }
