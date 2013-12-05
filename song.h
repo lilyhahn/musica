@@ -1,11 +1,15 @@
 #include <vector>
-#include "note.h"
 #include <irrKlang.h>
 #include "rule30.h"
+#ifndef NOTE
+	#include "note.h"
+#endif
 using namespace std;
 
 class Song{
 	vector<Note> allowedNotes;
+	//vector<Chord> allowedChords;
+	//vector<Chord> chordsToPlay;
 	vector<vector<int> > data;
 	vector<vector<int> > startData;
 	void fitKey();

@@ -1,4 +1,5 @@
 #include <string>
+#define NOTE 666
 using namespace std;
 /*enum Note{
 	Af = 8,
@@ -26,6 +27,8 @@ class Note{
 		static Note Af, A, As, Bf, B, C, Cs, Df, D, Ds, Ef, E, F, Fs, Gf, G, Gs;
 		Note(int val, string soundfile);
 		Note(int val);
+		Note();
+		string toString();
 		bool operator==(const Note &other) const{
 			if(other.value == this->value) return true;
 			return false;

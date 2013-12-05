@@ -19,6 +19,11 @@ Note Note::As = Note(10, "media/Piano.mf.Bb3.wav");
 Note Note::Bf = Note(10, "media/Piano.mf.Bb3.wav");
 Note Note::B = Note(11, "media/Piano.mf.B3.wav");
 
+Note::Note(){
+	value = 0;
+	sound = "media/Piano.mf.C3.wav";
+}
+
 Note::Note(int val, string soundfile){
 	value = val;
 	sound = soundfile;
@@ -63,6 +68,35 @@ Note::Note(int val){
 			sound = "media/Piano.mf.B3.wav";
 			break;
 	}
+}
+string Note::toString(){
+	switch(value){
+		case 0:
+			return "C";
+		case 1:
+			return "Db/Cs";
+		case 2:
+			return "D";
+		case 3:
+			return "Eb/Ds";
+		case 4:
+			return "E";
+		case 5:
+			return "F";
+		case 6:
+			return "Gb/Fs";
+		case 7:
+			return "G";
+		case 8:
+			return "Ab/Gs";
+		case 9:
+			return "A";
+		case 10:
+			return "Bb/As";
+		case 11:
+			return "B";
+	}
+	return "bad note";
 }
 /*string NoteUtil::toString(Note note){
 	switch(note){

@@ -1,6 +1,7 @@
 #include "song.h"
 #include <iostream>
 #include <unistd.h>
+#include "chord.h"
 using namespace std;
 
 int main(int argc, char **argv){
@@ -8,6 +9,9 @@ int main(int argc, char **argv){
 	if(argv[1] != NULL){
 		key = atoi(argv[1]);
 	}
+	Chord chord = Chord(Note(key));
+	cout << "Generated a " << chord.getRoot().toString() << " major chord. The third is " <<
+	chord.getThird().toString() << " and the fifth is " << chord.getFifth().toString() << endl;
 	Rule30 ca = Rule30(40);
 	vector<vector<int> > soup = ca.getData();
 	ca.render("rule30.png");
