@@ -9,16 +9,20 @@ int main(int argc, char **argv){
 	if(argv[1] != NULL){
 		key = atoi(argv[1]);
 	}
-	Chord chord = Chord(Note(key));
-	cout << "Generated a " << chord.getRoot().toString() << " major chord. The third is " <<
-	chord.getThird().toString() << " and the fifth is " << chord.getFifth().toString() << endl;
+	int bpm;
+	cout << "type your bpm: ";
+	cin >> bpm;
+	cout << endl;
+	//Chord chord = Chord(Note(key));
+	//cout << "Generated a " << chord.getRoot().toString() << " major chord. The third is " <<
+	//chord.getThird().toString() << " and the fifth is " << chord.getFifth().toString() << endl;
 	Rule30 ca = Rule30(40);
 	vector<vector<int> > soup = ca.getData();
 	ca.render("rule30.png");
 	//graphics::renderca(soup, (new complex(20, 40)), "range.png");
 	ca.constrain((complex(20, 32)));
 	ca.render("range.png");
-	Song* song = new Song(ca, 120, Note(key));
+	Song* song = new Song(ca, bpm, Note(key));
 	song->renderData("song.png");
 	song->play();
 	/*sleep(10);

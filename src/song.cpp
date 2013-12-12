@@ -1,6 +1,7 @@
 #include "song.h"
 #include <unistd.h>
 #include <cstdlib>
+#include <iostream>
 using namespace std;
 
 Song::Song(vector<vector<int> > d, Note key){
@@ -198,6 +199,7 @@ void Song::fitKey(){
 	for(int j = 0; j < data[0].size(); j++){
 		for(int i = 0; i < data.size(); i++){
 			int note = i; // start at the bottom and get higher as we go up
+			if(note > 11) note = 0;
 			if(!isInKey(Note(note))) data[i][j] = 0;
 		}
 	}
@@ -251,7 +253,9 @@ void Song::play(){
 				
 			}
 			else {
-				Note note = Note(i);
+				int noteval = i;
+				if(noteval > 11) noteval = 0;
+				Note note = Note(noteval);
 				engine->play2D(note.sound.c_str(), true);
 			}
 		}
